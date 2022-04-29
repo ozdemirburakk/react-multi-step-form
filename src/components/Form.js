@@ -56,6 +56,16 @@ function Form() {
               if (page === FormTitles.length - 1) {
                 console.log(formData);
                 alert("Form Submitted");
+                setFormData({
+                  email: "",
+                  password: "",
+                  confirmPassword: "",
+                  firstName: "",
+                  lastName: "",
+                  userName: "",
+                  nationality: "",
+                  other: "",
+                });
               } else {
                 setPage((currentPage) => currentPage + 1);
               }
