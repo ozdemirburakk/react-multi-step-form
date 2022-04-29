@@ -8,13 +8,24 @@ function Form() {
 
   const FormTitles = ["Sign Up", "Personal Information", "Other Information"];
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+    firstName: "",
+    lastName: "",
+    userName: "",
+    nationality: "",
+    other: "",
+  });
+
   const PageDisplay = () => {
     if (page === 0) {
-      return <SignUpInfo />;
+      return <SignUpInfo formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <PersonalInfo />;
+      return <PersonalInfo formData={formData} setFormData={setFormData} />;
     } else {
-      return <OtherInfo />;
+      return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
   };
   return (
@@ -41,12 +52,16 @@ function Form() {
             Prev
           </button>
           <button
-            disabled={page === FormTitles.length - 1}
             onClick={() => {
-              setPage((currentPage) => currentPage + 1);
+              if (page === FormTitles.length - 1) {
+                console.log(formData);
+                alert("Form Submitted");
+              } else {
+                setPage((currentPage) => currentPage + 1);
+              }
             }}
           >
-            Next
+            {page === FormTitles.length - 1 ? "Submit" : "Next"}
           </button>
         </div>
       </div>

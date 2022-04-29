@@ -1,11 +1,26 @@
 import React from "react";
 
-function SignUpInfo() {
+function SignUpInfo({ formData, setFormData }) {
   return (
     <div className="sign-up-container">
-      <input type="text" placeholder="Email..." />
-      <input type="password" placeholder="Password..." />
-      <input type="password" placeholder="Confirm Password..." />
+      <input
+        type="text"
+        placeholder="Email..."
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+      />
+      <input
+        type="password"
+        placeholder="Password..."
+        value={formData.password}
+        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+      />
+      <input
+        type="password"
+        placeholder="Confirm Password..."
+        value={formData.confirmPassword}
+        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+      />
     </div>
   );
 }
